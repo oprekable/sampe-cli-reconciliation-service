@@ -112,3 +112,41 @@ Missing Bank Statement Details - DANAMON        : /tmp/sampe-cli-reconciliation-
 -------------------------------------------------------------------------------------------------------------
 ```
 - Open report CSV files to get missing/unmatched details 
+
+### Data on The Tables
+- Script will generate postgres tables such 
+```mermaid
+classDiagram
+direction BT
+class bank_trx {
+   numeric(12,2) amount
+   text type
+   text bank
+   date date
+   text reconcilefile
+   text uniqueidentifier
+}
+class reconciliation_map {
+   text uniqueidentifier
+   text trxid
+}
+class system_trx {
+   numeric(12,2) amount
+   text type
+   timestamp transactiontime
+   text filename
+   text trxid
+}
+
+```
+- Access postgres DB server with credential
+```
+host : localhost
+post : 15432
+username : oprekable
+password : oprekable
+DB : oprekable
+```
+
+### Demo
+[![asciicast](https://asciinema.org/a/n4VWT0cb5V61OVBsbsCt4CY5H.svg)](https://asciinema.org/a/n4VWT0cb5V61OVBsbsCt4CY5H)
