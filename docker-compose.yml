@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  oprekable-postgres:
+    image: postgres:14
+    labels:
+      com.oprekable.service.name: "Sample CLI Reconciliation Service DB"
+      com.oprekable.service.description: "Sample CLI Reconciliation ServiceDB"
+      com.oprekable.service.image: "postgres"
+    ports:
+      - "15432:5432"
+    volumes:
+      - ./.docker/db/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=oprekable
+      - POSTGRES_USER=oprekable
+      - POSTGRES_DB=oprekable
+      - TZ=UTC
+      - LANG=C.UTF-8
+    logging:
+      options:
+        max-file: "7"
+        max-size: "5m"
